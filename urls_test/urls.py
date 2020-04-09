@@ -19,13 +19,14 @@ from users import views as users_views
 
 from django.conf.urls import url
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path
 
 urlpatterns = [
 	path('', main_views.UrlListView.as_view(), name="home"),
     url(r'^admin/', admin.site.urls),
-    # path('profile/', ProfileView.as_view(), name="profile"),
+    path('profile/', users_views.ProfileView.as_view(), name="profile"),
     path('register/', users_views.RegisterView.as_view(), name="register"),
     path('login/', auth_views.LoginView.as_view(template_name='users/login.html'), name="login"),
     path('logout/', auth_views.LogoutView.as_view(template_name='users/logout.html'), name="logout"),
+    path('ajax/check/', main_views.CheckUrls, name="cheker"),
 ]

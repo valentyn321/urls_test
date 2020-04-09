@@ -1,10 +1,12 @@
 {% extends "base.html" %}
 
+{% load static %}
+
 {% block content %}
 
 <!--Table starts-->
- <div class="requests_table mt-2 ml-3" id="req_tab">
-     <table class="table table-striped" id="requests_tab">
+ <div class="mt-2 ml-3" id="urls_tab">
+     <table class="table table-striped" >
          <thead>
             <tr>
                 <th>ID</th>
@@ -15,7 +17,7 @@
          </thead>
          <tbody>
             {% for object in object_list %}         
-            <tr>
+            <tr {% if object.up == True %} class="bg-success" {% else %} class="bg-danger {% endif %}">
                 <td>{{ object.id }}</td>
                 <td>{{ object.title}}</td>
                 <td>{{ object.reference}}</td>
@@ -26,3 +28,7 @@
 </div>
 
 {% endblock content %}
+
+{% block javascript %}
+    <script src="{% static 'main/js/scripts.js' %}"></script>
+{% endblock javascript %}

@@ -15,6 +15,7 @@ class TestViews(TestCase):
     def test_requests_view(self):
         """compare"""
         client = Client()
+        print()
         response = client.get(reverse('home'))
         self.assertTemplateUsed(response, 'main/main.html')
         self.assertEquals(response.status_code, 200)
