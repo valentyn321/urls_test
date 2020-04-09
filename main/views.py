@@ -13,9 +13,12 @@ class UrlListView(ListView):
 def CheckUrls(request):
     http = urllib3.PoolManager()
     queryset =  Url.objects.all()
-    for obj in queryset:        
-        if http.request('GET', obj.reference).status == 200:
-            obj.up = True
-            obj.save()
+    for obj in queryset:
+        try:        
+            if http.request('GET', obj.reference).status == 200:
+                obj.up = True
+                obj.save()
+        except:
+            print("Incorrect!")
 
     return JsonResponse({})
