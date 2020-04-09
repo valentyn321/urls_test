@@ -17,12 +17,14 @@ from django.contrib.auth import views as auth_views
 from main import views as main_views
 from users import views as users_views
 
+from django.contrib.auth.decorators import login_required
+
 from django.conf.urls import url
 from django.contrib import admin
 from django.urls import path
 
 urlpatterns = [
-	path('', main_views.UrlListView.as_view(), name="home"),
+	path('', login_required(main_views.UrlListView.as_view()), name="home"),
     url(r'^admin/', admin.site.urls),
     path('profile/', users_views.ProfileView.as_view(), name="profile"),
     path('register/', users_views.RegisterView.as_view(), name="register"),
