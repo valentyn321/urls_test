@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<!--Table starts-->
+ <div class="requests_table mt-2 ml-3" id="req_tab">
+     <table class="table table-striped" id="requests_tab">
+         <thead>
+            <tr>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Reference</th>
+                <th>Description</th>
+            </tr>
+         </thead>
+         <tbody>
+            {% for object in object_list %}         
+            <tr>
+                <td>{{ object.id }}</td>
+                <td>{{ object.title}}</td>
+                <td>{{ object.reference}}</td>
+                <td>{{ object.description }}</td>
+            {% endfor %}                    
+         </tbody>
+     </table>
+</div>
+
+{% endblock content %}

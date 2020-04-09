@@ -21,6 +21,6 @@ from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
-	path('', main_views.home_page, name="home"),
+	path('', main_views.UrlListView.as_view(), name="home"),
     url(r'^admin/', admin.site.urls),
 ]

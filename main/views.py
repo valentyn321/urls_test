@@ -1,4 +1,7 @@
-from django.shortcuts import render
+from main.models import Url
+from django.views.generic import ListView
 
-def home_page(request):
-	return render(request, "base.html", {})
+
+class UrlListView(ListView):
+    model = Url
+    template_name = 'main/main.html'
